@@ -50,11 +50,19 @@ for i in range(1, num_players+1):
     exec("print('%s has... ', str(%sHand))" % (name_,name_)) 
     exec("this_hand = %sHand" % name_)
     exec("player_hands.append(%sHand)" % name_)
-    if this_hand > max(player_hands):
-        best = this_hand
-    elif this_hand == max(player_hands):
-        best = "push!"
-    else:
-        pass
 
-print(best) 
+def filterByMax(li):
+    filtered = []
+    for x in li:
+        if x == max(li):
+            filtered.append(li.index(x))
+        else:
+            pass
+    return filtered
+
+winner_index = filterByMax(player_hands)
+if len(winner_index) > 1:
+    print("Push!")
+else:
+    winner = player_names[winner_index[0]]
+    print("%s wins! " % winner)
