@@ -14,12 +14,13 @@ class BankRoll(object):
         return str(self.balance)
 
     def bet(self, amount, pot):
-        self.balance -= amount
-        pot.balance += amount
-        return pot.balance
-
-#    def call(self):
-#        self.
+        if self.balance - amount < 0:
+            raise ValueError("bet exceeds balance!")
+        else:
+            self.balance -= amount
+            pot.balance += amount
+            print("The pot is now %s" % pot.balance)
+            return pot.balance
 
     def credit(self, amount):
         self.balance += amount
