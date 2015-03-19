@@ -10,6 +10,9 @@ class BankRoll(object):
             balance = 0
         self.balance = balance
 
+    def __str__(self):
+        return str(self.balance)
+
     def __repr__(self):
         return str(self.balance)
 
@@ -45,19 +48,20 @@ class Table(object):
                 pass
        
 class Player(object):
-    def __init__(self, name, bankRoll=0, action=None):
+    def __init__(self, name, credit=None, cards=None):
         self.name = name
-        self.balance = bankRoll
-        self.cards = OrderedCards()
-        if action is None:
-            self.action=False
-
+        if credit is None:
+            self.bankroll = BankRoll()
+        else:
+            self.bankroll = BankRoll(credit)
+        if cards is None:
+            self.cards = OrderedCards()
+        else:
+            self.cards = OrderedCards(cards)
+        self.action = False
+    
     def __str__(self):
-        return self.name+": "+str(self.balance)+"; "+str(self.cards)
-
+        return self.name+": "+str(self.bankroll)+"; "+str(self.cards)
     def __repr__(self):
         return self.__str__()
-
-
-
 
