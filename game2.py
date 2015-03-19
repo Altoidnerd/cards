@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import itertools, random
-from pokerHands import *
+from player import *
 
 # create deck
 deck = getDeck()
