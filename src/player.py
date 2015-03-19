@@ -6,14 +6,20 @@ from pokerHands import *
 
 class Table(object):
     def __init__(self, players=None, pot=None):
-        if players is none:
+        if players is None:
             self.players = None
         else:
             self.players = players 
         if pot is None:
-            self.pot = BankRoll()
+            self.pot = 0
+        else: self.pot = pot
     def setLimit(self, lim):
         self.limit = lim
+    def __str__(self):
+        return str(self.players) +"  Table Pot:" + str(self.pot)
+    def __repr__(self):
+        return self.__str__()
+
 
 class Player(object):
     def __init__(self, name, credit=None, cards=None):
@@ -53,4 +59,9 @@ class Player(object):
         else:
             self.balance -= amount
             return self
+
+a=Player('al', 1000)
+b=Player('fred', 1000)
+c=Player('sheryl', 1000)
+t=Table(players=[a,b,c], pot=0)
 
