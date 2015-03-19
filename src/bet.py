@@ -5,8 +5,8 @@ import random
 from pokerHands import *
 
 class BankRoll(object):
-    def __init__(self,balance=None):
-        if(balance is None):
+    def __init__(self, balance=None):
+        if (balance is None):
             balance = 0
         self.balance = balance
 
@@ -29,7 +29,35 @@ class BankRoll(object):
     def debit(self, amount):
         self.balance -= amount
         return self.balance
-
+##test helper pot
 pot = BankRoll()
+##
+
+
+class Table(object):
+    def __init__(self, players):
+        self.players = players 
+    def action(self): 
+        for k in players:
+            if k.action == True:
+                return k
+            else:
+                pass
+       
+class Player(object):
+    def __init__(self, name, bankRoll=0, action=None):
+        self.name = name
+        self.balance = bankRoll
+        self.cards = OrderedCards()
+        if action is None:
+            self.action=False
+
+    def __str__(self):
+        return self.name+": "+str(self.balance)+"; "+str(self.cards)
+
+    def __repr__(self):
+        return self.__str__()
+
+
 
 
